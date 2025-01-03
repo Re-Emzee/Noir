@@ -1,51 +1,72 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	margin: 0;
+	padding: 0;
 }
 
 .container {
-  text-align: center;
-  padding: 20px;
+	text-align: center;
+	padding: 20px;
 }
 
 header {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 #time {
-  font-size: 3em;
-  margin: 0;
+	font-size: 3em;
+	margin: 0;
 }
 
 #date {
-  font-size: 1.2em;
-  margin: 0;
+	font-size: 1.2em;
+	margin: 0;
 }
 
 .search {
-  margin: 20px 0;
+	margin: 20px 0;
 }
 
 #search-bar {
-  width: 70%;
-  padding: 10px;
-  font-size: 1em;
+	width: 70%;
+	padding: 10px;
+	font-size: 1em;
 }
 
 #search-btn {
-  padding: 10px 20px;
-  font-size: 1em;
-  cursor: pointer;
+	padding: 10px 20px;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+#profiles {
+	margin-top: 30px;
+}
+
+#profiles-list {
+	list-style: none;
+	padding: 0;
+}
+
+#profiles-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#profiles-list li button {
+	margin-left: 10px;
+	padding: 5px;
+	cursor: pointer;
 }
 
 #bookmarks {
-  text-align: left;
-  margin-top: 30px;
+	text-align: left;
+	margin-top: 30px;
 }
 
 #bookmarks-list {
-  list-style: none;
-  padding: 0;
+	list-style: none;
+	padding: 0;
 }
