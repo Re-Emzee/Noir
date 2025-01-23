@@ -14,10 +14,18 @@
 </head>
 
 <body>
-    <nav>
-    <div id="terminal" onclick="focusPrompt()">
-      <div id="terminal-content"></div>
+    <div class="container">
+    <nav>  
+    <div class="head">
+        <p>> cd ~/<span class="blinking">_</span></p>
     </div>
+    </nav>
+
+    <div class="content">
+    <nav>  
+      <div id="terminal" onclick="focusPrompt()">
+        <div id="terminal-content"></div>
+      </div>
 
     <script src='src/constants.js'></script>
     <script src="src/utils.js"></script>
@@ -28,6 +36,7 @@
 
     </nav>
   <img src="logo.jpg" alt="anime girl">
-  
+    </div>
+  </div>
 </body>
 </html>
