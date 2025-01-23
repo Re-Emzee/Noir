@@ -27,7 +27,7 @@ body {
 #terminal {
   background-color: rgba(39,39,39,1);
   box-sizing: border-box;
-  width: 700px;
+  width: 50vw;
   height: 450px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
   border-radius: 4px;
