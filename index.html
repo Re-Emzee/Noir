@@ -1,38 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom New Tab</title>
-  <link rel="stylesheet" href="style.css">
+<html lang="en" class="classes">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomeTerm</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <h1 id="time">Loading...</h1>
-      <p id="date">Loading...</p>
-    </header>
-    <main>
-      <!-- Search Bar -->
-      <div class="search">
-        <input type="text" id="search-bar" placeholder="Type a command...">
-        <button id="search-btn">Go</button>
-      </div>
+    <nav>
+    <div id="terminal" onclick="focusPrompt()">
+      <div id="terminal-content"></div>
+    </div>
 
-      <!-- Profiles -->
-      <div id="profiles">
-        <h2>Profiles</h2>
-        <ul id="profiles-list"></ul>
-        <button id="add-profile-btn">Add Profile</button>
-      </div>
+    <script src='src/constants.js'></script>
+    <script src="src/utils.js"></script>
+    <script src="src/localStorageUtils.js"></script>
+    <script src="src/writers.js"></script>
+    <script src="src/commands.js"></script>
+    <script src="src/cli.js"></script>
 
-      <!-- Bookmarks -->
-      <div id="bookmarks">
-        <h2>Bookmarks</h2>
-        <ul id="bookmarks-list"></ul>
-      </div>
-    </main>
-  </div>
-  <script src="js/loader.js"></script>
+    </nav>
+  <img src="logo.jpg" alt="anime girl">
+  
 </body>
 </html>
