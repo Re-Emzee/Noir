@@ -38,6 +38,10 @@ const COMMANDS = {
     func: joinWriter(edit, textWriter),
     help: "usage: edit <link path> <url>",
   },
+  todo: {
+    func: joinWriter(todo, textWriter),
+    help: "todo"
+  },
 };
 
 // Global data
