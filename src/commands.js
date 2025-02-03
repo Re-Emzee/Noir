@@ -265,7 +265,7 @@ function todo(input) {
   if (!input || input.length === 0) {
     // No arguments: Display the to-do list
     if (todoList.length === 0) {
-      return "Your to-do list is empty.";
+      return textWriter("Your to-do list is empty.");
     }
     return todoList.map((task, index) => `${index + 1}. ${task}`).join("\n");
   }
