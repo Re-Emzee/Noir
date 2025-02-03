@@ -244,3 +244,65 @@ function edit(input) {
     return err;
   }
 }
+
+// Key for storing the to-do list in LocalStorage
+const LS_TODO_KEY = "todoList";
+
+// Function to read the to-do list from LocalStorage
+function readTodo() {
+  return safeParse(localStorage.getItem(LS_TODO_KEY)) || [];
+}
+
+// Function to write the to-do list to LocalStorage
+function writeTodo(todoList) {
+  localStorage.setItem(LS_TODO_KEY, JSON.stringify(todoList));
+}
+
+// The todo command function
+function todo(input) {
+  const todoList = readTodo();
+
+  if (!input || input.length === 0) {
+    // No arguments: Display the to-do list
+    if (todoList.length === 0) {
+      return textWriter("Your to-do list is empty.");
+    }
+    return todoList.map((task, index) => `${index + 1}. ${task}`).join("\n");
+  }
+
+  const subCommand = input[0];
+
+  switch (subCommand) {
+    case "add":
+      if (input.length < 2) {
+        return "Usage: todo add [task]";
+      }
+      const task = input.slice(1).join(" ");
+      todoList.push(task);
+      writeTodo(todoList);
+      return `Added task: "${task}"`;
+
+    case "remove":
+      if (input.length < 2 || isNaN(input[1])) {
+        return "Usage: todo remove [index]";
+      }
+      const index = parseInt(input[1], 10) - 1;
+      if (index < 0 || index >= todoList.length) {
+        return `Invalid index: ${input[1]}`;
+      }
+      const removedTask = todoList.splice(index, 1)[0];
+      writeTodo(todoList);
+      return `Removed task: "${removedTask}"`;
+
+    case "clear":
+      writeTodo([]);
+      return "Cleared the to-do list.";
+
+    default:
+      return `Unknown subcommand: ${subCommand}. Usage: 
+        - todo: List tasks
+        - todo add [task]: Add a task
+        - todo remove [index]: Remove a task by index
+        - todo clear: Clear all tasks`;
+  }
+}

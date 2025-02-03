@@ -38,6 +38,10 @@ const COMMANDS = {
     func: joinWriter(edit, textWriter),
     help: "usage: edit <link path> <url>",
   },
+  todo: {
+    func: joinWriter(todo, textWriter),
+    help: "todo"
+  },
 };
 
 // Global data
@@ -104,6 +108,10 @@ function handleKeyPresses(e) {
         return pushCommand(commandHistory[commandHistoryCursor]);
       }
       break;
+    case "Tab":
+      e.preventDefault();
+      complete();
+      break;
     default:
       break;
   }
@@ -130,4 +138,10 @@ function runCommand(cmd) {
     replacePrompt();
   }
   focusPrompt();
+}
+
+function complete() {
+  const input = document.getElementById("prompt-input").value.trim();
+  const matches = Object.keys(COMMANDS).filter(cmd => cmd.startsWith(input));
+  pushCommand(matches[0]);
 }
