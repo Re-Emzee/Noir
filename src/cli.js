@@ -143,5 +143,20 @@ function runCommand(cmd) {
 function complete() {
   const input = document.getElementById("prompt-input").value.trim();
   const matches = Object.keys(COMMANDS).filter(cmd => cmd.startsWith(input));
+
+  try {
+    const cursor = path ? locatePath(path) : getCurrentCursor();
+    if (locationType(cursor) === types.DIR) {
+      return Object.entries(cursor).map(([key, value]) => {
+        return {
+          key,
+          type: locationType(value), // Determine if dir or link
+        };
+      });
+    }
+  } catch (err) {
+    return err;
+  }
+
   pushCommand(matches[0]);
 }
