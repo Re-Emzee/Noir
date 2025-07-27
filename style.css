@@ -1,33 +1,130 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
-html {
-  background-color: #171717;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
+/**
+* Theme Definitions
+*/
+
+:root {
+  --body-bg: #171717;
+  --bg: #272727;
+  --fg: #ffffff;
+  --directory: #5e81ac;
+  --prompt: #88c0d0;
+  --cursor: var(--fg);
+  --listItem: var(--fg);
+  --listTitle: var(--fg);
+  --link: var(--fg);
+  --tree: var(--fg);
+
   font-family: 'Ubuntu Mono', monospace;
   font-size: 16px;
-  height: 100%;
-  margin: 0;
 }
 
+body.dark {
+  /* Empty definition to handle switching back to "dark" as default */
+}
+
+body.light {
+  --body-bg: #f3f3f3;
+  --bg: #fefefe;
+  --fg: #1e1e1e;
+  --directory: #526e39;
+  --prompt: #526e39;
+  --cursor: var(--fg);
+  --listItem: var(--fg);
+  --listTitle: var(--fg);
+  --link: var(--fg);
+  --tree: var(--fg);
+}
+
+body.laserwave {
+  --body-bg: #1c1720;
+  --bg: #27212e;
+  --fg: #ffffff;
+  --directory: #40b4c4;
+  --prompt: #eb64b9;
+  --cursor: var(--prompt);
+  --listItem: var(--fg);
+  --listTitle: var(--fg);
+  --link: var(--fg);
+  --tree: var(--fg);
+}
+
+body.nord {
+  --body-bg: #2e3440;
+  --bg: #3b4252;
+  --fg: #eceff4;
+  --directory: #5e81ac;
+  --prompt: #8fbcbb;
+  --cursor: #88c0d0;
+  --listItem: var(--fg);
+  --listTitle: var(--fg);
+  --link: var(--fg);
+  --tree: var(--fg);
+}
+
+body.dracula {
+  --body-bg: #191a20;
+  --bg: #282a35;
+  --fg: #f8f8f2;
+  --directory: #8be9fd;
+  --prompt: #e97fc0;
+  --cursor: #6272a4;
+  --listItem: var(--fg);
+  --listTitle: var(--fg);
+  --link: var(--fg);
+  --tree: var(--fg);
+}
+
+body.greyscale {
+  --body-bg: #2a2a2a;
+  --bg: #1d1d1d;
+  --fg: #fff;
+  --directory: #888;
+  --prompt: #7a7a7a;
+  --cursor: var(--prompt);
+  --listItem: var(--fg);
+  --listTitle: var(--fg);
+  --link: var(--fg);
+  --tree: var(--fg);
+}
+
+body.nightowl {
+  --body-bg: #00101d;
+  --bg: #011627;
+  --fg: #d6deeb;
+  --directory: #ffcb8b;
+  --prompt: #c792ea;
+  --cursor: var(--prompt);
+  --listItem: var(--fg);
+  --listTitle: var(--fg);
+  --link: var(--fg);
+  --tree: var(--fg);
+}
+
+/**
+* Terminal Default Styling
+*/
+
 body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--body-bg);
+  color: var(--fg);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin: 0;
-  padding: 1em;
+  font-family: var(--fontFamily);
+  font-size: var(--fontSize);
 }
 
 #terminal {
-  background-color: rgba(39,39,39,1);
+  background-color: var(--bg);
   box-sizing: border-box;
-  width: 50vw;
+  width: 700px;
   height: 450px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
   border-radius: 4px;
@@ -182,23 +279,6 @@ body {
   text-decoration: none;
 }
 
-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-right: 2em;
-}
-
-
-img {
-  border: 2px solid #ebdbb2;
-  border-radius: 4px;
-  width: 200px;
-  height: 450px;
-  object-fit: cover;
-  object-position: center;
-}
-
 .head {
   display: flex;
   flex-direction: column;
@@ -226,18 +306,4 @@ img {
   100% {
     opacity: 1;
   }
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5em; /* Adjust spacing between terminal and image */
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
