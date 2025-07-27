@@ -51,6 +51,7 @@ let links = {};
 let position = []; // Determines where in the link tree we are currently
 let commandHistory = [];
 let commandHistoryCursor = -1;
+let index = 0; //Sets the index for the tab cycle
 // IIFE for setup
 (() => {
   const lsLinks = readLinks();
@@ -81,7 +82,7 @@ function handleKeyPresses(e) {
   switch (e.key) {
     case "Enter":
       e.preventDefault();
-      const input = document.getElementById("prompt-input");
+      input = document.getElementById("prompt-input");
       return runCommand(input.value);
     case "ArrowUp":
       e.preventDefault();
@@ -110,9 +111,12 @@ function handleKeyPresses(e) {
       break;
     case "Tab":
       e.preventDefault();
-      complete();
+      input = document.getElementById("prompt-input").value.trim();
+      complete(input, index);
+      index++;
       break;
     default:
+      index = 0;
       break;
   }
 }
@@ -140,23 +144,17 @@ function runCommand(cmd) {
   focusPrompt();
 }
 
-function complete() {
-  const input = document.getElementById("prompt-input").value.trim();
-  const matches = Object.keys(COMMANDS).filter(cmd => cmd.startsWith(input));
-
-  try {
-    const cursor = path ? locatePath(path) : getCurrentCursor();
-    if (locationType(cursor) === types.DIR) {
-      return Object.entries(cursor).map(([key, value]) => {
-        return {
-          key,
-          type: locationType(value), // Determine if dir or link
-        };
-      });
-    }
-  } catch (err) {
-    return err;
+function complete(input, index) {
+  const parsedInput = parseCommand(input);
+  if (COMMANDS[parsedInput[0]]) {
+    const cursor = getCurrentCursor();
+    matches = Object.keys(cursor).filter(cmd => cmd.startsWith(parsedInput[1]));
+    const fillIndex = index % matches.length;
+    pushCommand(parsedInput[0] + " " + matches[fillIndex]);
   }
-
-  pushCommand(matches[0]);
+  else {
+    matches = Object.keys(COMMANDS).filter(cmd => cmd.startsWith(input));
+    const fillIndex = index % matches.length;
+    pushCommand(matches[fillIndex]);
+  }
 }
