@@ -176,11 +176,11 @@ function complete(input, index, prev) {
             .map(([key]) => key);
           break;
         case "todo":
-          if (arg == add | arg == remove) {
+          if (arg == "add" | arg == "remove") {
             matches = readTodo();
           }
           else if (arg == "") {
-            matches = { add, remove, clear };
+            matches = ["add", "remove", "clear"];
           }
           break
         default:
