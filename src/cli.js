@@ -51,6 +51,9 @@ let links = {};
 let position = []; // Determines where in the link tree we are currently
 let commandHistory = [];
 let commandHistoryCursor = -1;
+let index = 0; //Sets the index for the tab cycle
+let cmdcycle = 0; //cmd cycle
+let prev = []; //prev match for tab complete
 // IIFE for setup
 (() => {
   const lsLinks = readLinks();
@@ -81,7 +84,9 @@ function handleKeyPresses(e) {
   switch (e.key) {
     case "Enter":
       e.preventDefault();
-      const input = document.getElementById("prompt-input");
+      input = document.getElementById("prompt-input");
+      index = 0;
+      cmdcycle = 0;
       return runCommand(input.value);
     case "ArrowUp":
       e.preventDefault();
@@ -110,9 +115,13 @@ function handleKeyPresses(e) {
       break;
     case "Tab":
       e.preventDefault();
-      complete();
+      input = document.getElementById("prompt-input").value.trim();
+      prev = complete(input, index, prev);
+      index++;
       break;
     default:
+      index = 0;
+      cmdcycle = 0;
       break;
   }
 }
@@ -140,8 +149,64 @@ function runCommand(cmd) {
   focusPrompt();
 }
 
-function complete() {
-  const input = document.getElementById("prompt-input").value.trim();
-  const matches = Object.keys(COMMANDS).filter(cmd => cmd.startsWith(input));
-  pushCommand(matches[0]);
+function complete(input, index, prev) {
+  const parsedInput = parseCommand(input);
+  const cmd = parsedInput[0];
+  const arg = parsedInput[1] || "";
+
+  let matches = [];
+
+  if (COMMANDS[cmd] && !cmdcycle) {
+    const cursor = getCurrentCursor();
+    if (index > 0) {
+      index = index % prev.length;
+      matches = prev;
+    }
+    else {
+      // Context-aware filtering based on command
+      if (cmd === "ls" || cmd === "cd") {
+        // Only suggest directories
+        matches = Object.entries(cursor)
+          .filter(([key, val]) => locationType(val) === types.DIR && key.startsWith(arg))
+          .map(([key]) => key);
+      } else if (cmd === "open") {
+        // Only suggest links
+        matches = Object.entries(cursor)
+          .filter(([key, val]) => locationType(val) === types.LINK && key.startsWith(arg))
+          .map(([key]) => key);
+      } else {
+        // Default: suggest anything in cursor
+        matches = Object.keys(cursor).filter(key => key.startsWith(arg));
+      }
+
+      // If no matches, fallback to full list of that type
+      if (matches.length === 0) {
+        if (cmd === "ls" || cmd === "cd") {
+          matches = Object.entries(cursor)
+            .filter(([_, val]) => locationType(val) === types.DIR)
+            .map(([key]) => key);
+        } else if (cmd === "open") {
+          matches = Object.entries(cursor)
+            .filter(([_, val]) => locationType(val) === types.LINK)
+            .map(([key]) => key);
+        } else {
+          matches = Object.keys(cursor);
+        }
+      }
+    }
+
+    pushCommand(cmd + " " + matches[index]);
+  } else {
+    // Command name completion
+    prev.lenth == 0 ? cmdcycle = 0 : cmdcycle = 1;
+    matches = Object.keys(COMMANDS).filter(c => c.startsWith(input));
+    if (matches.length === 0) matches = Object.keys(COMMANDS);
+    if (index > 0) {
+      index = index % prev.length;
+      matches = prev;
+    }
+
+    pushCommand(matches[index]);
+  }
+  return matches;
 }
