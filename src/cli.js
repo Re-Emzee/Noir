@@ -164,21 +164,29 @@ function complete(input, index, prev) {
     }
     else {
       // Context-aware filtering based on command
-      if (cmd === "ls" || cmd === "cd") {
-        // Only suggest directories
-        matches = Object.entries(cursor)
-          .filter(([key, val]) => locationType(val) === types.DIR && key.startsWith(arg))
-          .map(([key]) => key);
-      } else if (cmd === "open") {
-        // Only suggest links
-        matches = Object.entries(cursor)
-          .filter(([key, val]) => locationType(val) === types.LINK && key.startsWith(arg))
-          .map(([key]) => key);
-      } else {
-        // Default: suggest anything in cursor
-        matches = Object.keys(cursor).filter(key => key.startsWith(arg));
+      switch (cmd) {
+        case "ls", "cd":
+          matches = Object.entries(cursor)
+            .filter(([key, val]) => locationType(val) === types.DIR && key.startsWith(arg))
+            .map(([key]) => key);
+          break;
+        case "open":
+          matches = Object.entries(cursor)
+            .filter(([key, val]) => locationType(val) === types.LINK && key.startsWith(arg))
+            .map(([key]) => key);
+          break;
+        case "todo":
+          if (arg == add | arg == remove) {
+            matches = readTodo();
+          }
+          else if (arg == "") {
+            matches = { add, remove, clear };
+          }
+          break
+        default:
+          matches = Object.keys(cursor).filter(key => key.startsWith(arg));
+          break;
       }
-
       // If no matches, fallback to full list of that type
       if (matches.length === 0) {
         if (cmd === "ls" || cmd === "cd") {
