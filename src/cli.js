@@ -192,8 +192,6 @@ function complete(input, index, prev) {
       case "todo":
         if (arg == "add" | arg == "remove") {
           matches = readTodo().map(item => arg + " " + item);
-          pushCommand(cmd + " " + matches[index]);
-          return matches;
         }
         else {
           matches = ["add", "remove", "clear"]
