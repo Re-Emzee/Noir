@@ -178,6 +178,8 @@ function complete(input, index, prev) {
         case "todo":
           if (arg == "add" | arg == "remove") {
             matches = readTodo();
+            pushCommand(cmd + arg + matches[index]);
+            return matches;
           }
           else if (arg == "") {
             matches = ["add", "remove", "clear"];
