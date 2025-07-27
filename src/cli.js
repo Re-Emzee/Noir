@@ -155,68 +155,69 @@ function complete(input, index, prev) {
   const arg = parsedInput[1] || "";
 
   let matches = [];
+  if (index > 0) {
+    index = index % prev.length;
+    matches = prev;
+  }
 
-  if (COMMANDS[cmd] && !cmdcycle) {
+  else if (COMMANDS[cmd] && !cmdcycle) {
     const cursor = getCurrentCursor();
-    if (index > 0) {
-      index = index % prev.length;
-      matches = prev;
-    }
-    else {
-      // Context-aware filtering based on command
-      switch (cmd) {
-        case "ls", "cd":
-          matches = Object.entries(cursor)
-            .filter(([key, val]) => locationType(val) === types.DIR && key.startsWith(arg))
-            .map(([key]) => key);
-          break;
-        case "open":
-          matches = Object.entries(cursor)
-            .filter(([key, val]) => locationType(val) === types.LINK && key.startsWith(arg))
-            .map(([key]) => key);
-          break;
-        case "todo":
-          if (arg == "add" | arg == "remove") {
-            matches = readTodo();
-            pushCommand(cmd + arg + matches[index]);
-            return matches;
-          }
-          else if (arg == "") {
-            matches = ["add", "remove", "clear"];
-          }
-          break
-        default:
-          matches = Object.keys(cursor).filter(key => key.startsWith(arg));
-          break;
-      }
-      // If no matches, fallback to full list of that type
-      if (matches.length === 0) {
-        if (cmd === "ls" || cmd === "cd") {
+    // Context-aware filtering based on command
+    switch (cmd) {
+      case "cd":
+      case "ls":
+        matches = Object.entries(cursor)
+          .filter(([key, val]) => locationType(val) === types.DIR && key.startsWith(arg))
+          .map(([key]) => key);
+
+        if (matches.length === 0) {
           matches = Object.entries(cursor)
             .filter(([_, val]) => locationType(val) === types.DIR)
             .map(([key]) => key);
-        } else if (cmd === "open") {
+        }
+
+        break;
+      case "open":
+        matches = Object.entries(cursor)
+          .filter(([key, val]) => locationType(val) === types.LINK && key.startsWith(arg))
+          .map(([key]) => key);
+
+        if (matches.length === 0) {
           matches = Object.entries(cursor)
             .filter(([_, val]) => locationType(val) === types.LINK)
             .map(([key]) => key);
-        } else {
-          matches = Object.keys(cursor);
         }
-      }
+
+        break;
+      case "todo":
+        if (arg == "add" | arg == "remove") {
+          matches = readTodo().map(item => arg + " " + item);
+          pushCommand(cmd + " " + matches[index]);
+          return matches;
+        }
+        else {
+          matches = ["add", "remove", "clear"]
+            .filter(key => key.startsWith(arg));
+          if (matches.length === 0) {
+            matches = ["add", "remove", "clear"]
+          }
+        }
+        break
+      default:
+        matches = Object.keys(cursor).filter(key => key.startsWith(arg));
+        matches = Object.keys(cursor);
+        break;
     }
 
-    pushCommand(cmd + " " + matches[index]);
+    matches = matches.map(item => cmd + " " + item);
   } else {
     // Command name completion
     prev.lenth == 0 ? cmdcycle = 0 : cmdcycle = 1;
     matches = Object.keys(COMMANDS).filter(c => c.startsWith(input));
     if (matches.length === 0) matches = Object.keys(COMMANDS);
-    if (index > 0) {
-      index = index % prev.length;
-      matches = prev;
-    }
 
-    pushCommand(matches[index]);
   }
+
+  pushCommand(matches[index]);
   return matches;
 }
