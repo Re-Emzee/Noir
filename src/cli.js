@@ -42,6 +42,10 @@ const COMMANDS = {
     func: joinWriter(todo, textWriter),
     help: "todo"
   },
+  info: {
+    func: joinWriter(info, textWriter),
+    help: "info"
+  }
 };
 
 // Global data

@@ -258,6 +258,10 @@ function writeTodo(todoList) {
   localStorage.setItem(LS_TODO_KEY, JSON.stringify(todoList));
 }
 
+function info() {
+  window.open("./portfolio/index.html");
+}
+
 // The todo command function
 function todo(input) {
   const todoList = readTodo();
