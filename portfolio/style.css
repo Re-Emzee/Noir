@@ -124,6 +124,44 @@ body {
   aspect-ratio: 1 / 1;
 }
 
+.content-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.centered-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.github-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.github-button {
+  background-color: var(--button-bg, #24292e);
+  color: var(--button-text, #ffffff);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.github-button:hover {
+  background-color: #0366d6;
+  transform: scale(1.05);
+  color: #fff;
+}
+
 @media (max-width: 768px) {
   .landing-grid {
     grid-template-columns: repeat(2, 1fr);
