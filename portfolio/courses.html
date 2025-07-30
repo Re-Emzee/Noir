@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Courses - Emzee Yukina</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="./src/theme-toggle.js"></script>
+  <style>
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    details {
+      background-color: var(--nav-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      transition: background-color 0.3s;
+    }
+
+    details:hover {
+      background-color: var(--accent-color);
+    }
+
+    summary {
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--text-color);
+    }
+
+    .navbar {
+      background-color: var(--nav-bg);
+    }
+  </style>
+</head>
+<body class="dark">
+  <header class="navbar">
+    <div class="navbar-left">
+      <h1>Emzee Yukina</h1>
+      <p>B.A.Sc. Engineer-in-Training</p>
+    </div>
+    <nav class="navbar-right">
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="../about/index.html">About Me</a></li>
+        <li><a href="../courses/index.html">Courses</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../resume/index.html">Resume</a></li>
+        <li><button id="theme-toggle">🌓</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <details>
+      <summary>Computer Science</summary>
+      <p>List CS courses here...</p>
+    </details>
+
+    <details>
+      <summary>Electrical Engineering</summary>
+      <p>List EE courses here...</p>
+    </details>
+
+    <details>
+      <summary>Computer Engineering</summary>
+      <p>List CE courses here...</p>
+    </details>
+
+    <details>
+      <summary>Other</summary>
+      <p>List other relevant courses...</p>
+    </details>
+  </main>
+</body>
+</html>

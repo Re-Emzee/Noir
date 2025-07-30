@@ -1,0 +1,174 @@
+/* style.css */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --nav-bg: #f0f0f0;
+  --accent-color: #444;
+}
+
+body.dark {
+  --bg-color: #111111;
+  --text-color: #ffffff;
+  --nav-bg: #1e1e1e;
+  --accent-color: #dddddd;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--nav-bg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.navbar-left p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+}
+
+.navbar-right ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-right li a,
+.navbar-right li button {
+  color: var(--text-color);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.navbar-right li button:hover,
+.navbar-right li a:hover {
+  text-decoration: underline;
+}
+
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.grid-item {
+  background-color: var(--nav-bg);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 3rem;
+  transition: transform 0.2s, background-color 0.3s;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.grid-about {
+  grid-column: span 5;
+  grid-row: 1 / 2;
+  aspect-ratio: 5 / 3;
+}
+
+.grid-projects {
+  grid-column: span 4;
+  grid-row: 1 / 2;
+}
+
+.grid-courses {
+  grid-column: span 3;
+  grid-row: 2 / 3;
+  aspect-ratio: 1 / 1;
+}
+
+.grid-hire {
+  grid-column: span 3;
+  grid-row: 2 / 3;
+  aspect-ratio: 1 / 1;
+}
+
+.grid-socials {
+  grid-column: span 3;
+  grid-row: 2 / 3;
+  aspect-ratio: 1 / 1;
+}
+
+.content-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.centered-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.github-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.github-button {
+  background-color: var(--button-bg, #24292e);
+  color: var(--button-text, #ffffff);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.github-button:hover {
+  background-color: #0366d6;
+  transform: scale(1.05);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .landing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .grid-about, .grid-projects, .grid-courses, .grid-hire, .grid-socials {
+    grid-column: span 2;
+    aspect-ratio: auto;
+  }
+}
