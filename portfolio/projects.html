@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Emzee Yukina</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./src/theme-toggle.js"></script>
+  <style>
+    .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 2rem;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-card {
+      background-color: var(--nav-bg);
+      color: var(--text-color);
+      border-radius: 10px;
+      width: 300px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: all 1.1s ease;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-card.expanded {
+      position: fixed;
+      top: 130px;
+      left: 50%;
+      transform: translateX(-50%) scale(1.05);
+      width: 80vw;
+      height: calc(100vh - 100px);
+      background-color: var(--text-color);
+      color: var(--nav-bg);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 2rem;
+      border-radius: 20px;
+    }
+
+    .project-card.expanded .project-description {
+      font-size: 1.1rem;
+    }
+
+    .project-card.expanded .project-details {
+      margin-top: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      max-height: 3rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .project-tags {
+      font-size: 0.8rem;
+      color: var(--accent-color);
+    }
+
+    .project-image {
+      margin-top: 1rem;
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    body.expanding {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="dark">
+  <header class="navbar">
+    <div class="navbar-left">
+      <h1>Emzee Yukina</h1>
+      <p>B.A.Sc. Engineer-in-Training</p>
+    </div>
+    <nav class="navbar-right">
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About Me</a></li>
+        <li><a href="./courses.html">Courses</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./resume.html">Resume</a></li>
+        <li><button id="theme-toggle">🌓</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="project-container">
+    <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">Battery Management System Firmware</div>
+      <div class="project-description">Firmware to monitor, balance, and communicate battery cell states over CAN FD.</div>
+      <div class="project-tags">STM32 • CAN FD • Embedded C</div>
+      <div class="project-details" style="display:none">
+        <p>A full suite for battery state tracking with hardware interfacing, robust error handling, and CAN FD communication layer.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">ESP32 Bootloader with remote capabilities</div>
+      <div class="project-description">Custom bootloader for dual-bank firmware updates via CAN messages with CRC validation.</div>
+      <div class="project-tags">STM32 • Flash Memory • CAN Protocol</div>
+      <div class="project-details" style="display:none">
+        <p>This bootloader enables safe firmware updates with rollback protection and low-level flash control over CAN.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">AstroNvim Setup</div>
+      <div class="project-description">Highly customized Neovim configuration for efficient development across languages.</div>
+      <div class="project-tags">Lua • Neovim • LSP</div>
+      <div class="project-details" style="display:none">
+        <p>Modular configuration with LSP, linters, formatters, and UI theming designed for productivity and minimalism.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">RISK V CPU</div>
+      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
+      <div class="project-tags">HTML • CSS • JavaScript</div>
+      <div class="project-details" style="display:none">
+        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+  <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">ML motion Tracking Game</div>
+      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
+      <div class="project-tags">HTML • CSS • JavaScript</div>
+      <div class="project-details" style="display:none">
+        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+<div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">Nutrition Tracking App</div>
+      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
+      <div class="project-tags">HTML • CSS • JavaScript</div>
+      <div class="project-details" style="display:none">
+        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+<div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">Arduino Robotic Claw</div>
+      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
+      <div class="project-tags">HTML • CSS • JavaScript</div>
+      <div class="project-details" style="display:none">
+        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+  <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">UNIX-Based Shell </div>
+      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
+      <div class="project-tags">HTML • CSS • JavaScript</div>
+      <div class="project-details" style="display:none">
+        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+<div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">Virtual Memory System and Dynamic Memory Allocator</div>
+      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
+      <div class="project-tags">HTML • CSS • JavaScript</div>
+      <div class="project-details" style="display:none">
+        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+  <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-title">HomeTerm Fork</div>
+      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
+      <div class="project-tags">HTML • CSS • JavaScript</div>
+      <div class="project-details" style="display:none">
+        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
+        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleCard(card) {
+      const isExpanded = card.classList.contains('expanded');
+      document.body.classList.toggle('expanding', !isExpanded);
+      document.querySelectorAll('.project-card').forEach(c => {
+        c.classList.remove('expanded');
+        c.querySelector('.project-details').style.display = 'none';
+      });
+      if (!isExpanded) {
+        card.classList.add('expanded');
+        card.querySelector('.project-details').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

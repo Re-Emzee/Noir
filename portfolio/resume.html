@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume - Emzee Yukina</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./src/theme-toggle.js"></script>
+  <style>
+    .resume-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .resume-embed {
+      width: 100%;
+      max-width: 900px;
+      height: 90vh;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .download-link {
+      margin-top: 1rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .download-link a {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="dark">
+  <header class="navbar">
+    <div class="navbar-left">
+      <h1>Emzee Yukina</h1>
+      <p>B.A.Sc. Engineer-in-Training</p>
+    </div>
+    <nav class="navbar-right">
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About Me</a></li>
+        <li><a href="./courses.html">Courses</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./resume.html">Resume</a></li>
+        <li><button id="theme-toggle">🌓</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="resume-container">
+    <embed src="./assets/resume.pdf" type="application/pdf" class="resume-embed" />
+    <p class="download-link">
+      If the resume doesn't load, <a href="./assets/resume.pdf" target="_blank">click here to download it</a>.
+    </p>
+  </main>
+</body>
+</html>
