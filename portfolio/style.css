@@ -139,15 +139,15 @@ body {
   margin-bottom: 2rem;
 }
 
-.github-button-container {
+.button-container {
   display: flex;
   justify-content: center;
   margin: 2rem 0;
 }
 
-.github-button {
-  background-color: var(--button-bg, #24292e);
-  color: var(--button-text, #ffffff);
+.button {
+  background-color: var(--nav-bg);
+  color: var(--text-color);
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
@@ -156,8 +156,8 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.github-button:hover {
-  background-color: #0366d6;
+.button:hover {
+  background-color: var(--accent-color);
   transform: scale(1.05);
   color: #fff;
 }
