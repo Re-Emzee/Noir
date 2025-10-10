@@ -27,27 +27,31 @@
       padding: 1rem;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: all 1.1s ease;
-      overflow: hidden;
+      overflow: visible;
       cursor: pointer;
       position: relative;
       z-index: 1;
     }
 
     .project-card.expanded {
-      position: fixed;
-      top: 130px;
-      left: 50%;
-      transform: translateX(-50%) scale(1.05);
-      width: 80vw;
-      height: calc(100vh - 100px);
-      background-color: var(--text-color);
-      color: var(--nav-bg);
-      z-index: 1000;
-      overflow-y: auto;
-      padding: 2rem;
-      border-radius: 20px;
-    }
+  position: fixed;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%) scale(1.05);
+  width: 80vw;
+  height: calc(100vh - 150px); /* gives a little breathing room below */
+  background-color: var(--text-color);
+  color: var(--nav-bg);
+  z-index: 1000;
+  border-radius: 20px;
+  padding: 2rem;
 
+  overflow-y: auto;          
+  overflow-x: hidden;
+  max-height: none; 
+  box-sizing: border-box;
+  scrollbar-gutter: stable;  
+}
     .project-card.expanded .project-description {
       font-size: 1.1rem;
     }
@@ -90,100 +94,440 @@
 </head>
 <body>
   <main class="project-container">
-    <div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">Battery Management System Firmware</div>
-      <div class="project-description">Firmware to monitor, balance, and communicate battery cell states over CAN FD.</div>
-      <div class="project-tags">STM32 • CAN FD • Embedded C</div>
-      <div class="project-details" style="display:none">
-        <p>A full suite for battery state tracking with hardware interfacing, robust error handling, and CAN FD communication layer.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
 
-    <div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">ESP32 Bootloader with remote capabilities</div>
-      <div class="project-description">Custom bootloader for dual-bank firmware updates via CAN messages with CRC validation.</div>
-      <div class="project-tags">STM32 • Flash Memory • CAN Protocol</div>
-      <div class="project-details" style="display:none">
-        <p>This bootloader enables safe firmware updates with rollback protection and low-level flash control over CAN.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
-
-    <div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">AstroNvim Setup</div>
-      <div class="project-description">Highly customized Neovim configuration for efficient development across languages.</div>
-      <div class="project-tags">Lua • Neovim • LSP</div>
-      <div class="project-details" style="display:none">
-        <p>Modular configuration with LSP, linters, formatters, and UI theming designed for productivity and minimalism.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
-
-    <div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">RISK V CPU</div>
-      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
-      <div class="project-tags">HTML • CSS • JavaScript</div>
-      <div class="project-details" style="display:none">
-        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
-  <div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">ML motion Tracking Game</div>
-      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
-      <div class="project-tags">HTML • CSS • JavaScript</div>
-      <div class="project-details" style="display:none">
-        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
 <div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">Nutrition Tracking App</div>
-      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
-      <div class="project-tags">HTML • CSS • JavaScript</div>
-      <div class="project-details" style="display:none">
-        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
-<div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">Arduino Robotic Claw</div>
-      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
-      <div class="project-tags">HTML • CSS • JavaScript</div>
-      <div class="project-details" style="display:none">
-        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
-  <div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">UNIX-Based Shell </div>
-      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
-      <div class="project-tags">HTML • CSS • JavaScript</div>
-      <div class="project-details" style="display:none">
-        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
-<div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">Virtual Memory System and Dynamic Memory Allocator</div>
-      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
-      <div class="project-tags">HTML • CSS • JavaScript</div>
-      <div class="project-details" style="display:none">
-        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
-    </div>
-  <div class="project-card" onclick="toggleCard(this)">
-      <div class="project-title">HomeTerm Fork</div>
-      <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
-      <div class="project-tags">HTML • CSS • JavaScript</div>
-      <div class="project-details" style="display:none">
-        <p>This site was built to showcase academic and technical achievements with clean design and interactive elements.</p>
-        <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
-      </div>
+  <div class="project-title">Battery Management System Firmware</div>
+  <div class="project-description">
+    STM32U5 firmware interfacing the TI BQ76920 battery monitor via I2C, providing live cell diagnostics, fault monitoring, and CAN reporting.
+  </div>
+  <div class="project-tags">STM32 • I2C • BQ76920 • CAN Bus</div>
+
+  <div class="project-details" style="display:none">
+    <h2 id="overview">Overview</h2>
+    <blockquote>“Would be better to not have to swim up to the boat to push an update.” — <em>Michael prob?</em></blockquote>
+    <p>
+      This page houses the <strong>PLRS BMS Firmware Project</strong>, responsible for communicating with the Battery Management System (BMS) and collecting real-time cell data.
+      The firmware runs on an <strong>STM32U5xx</strong> microcontroller and uses <strong>I2C</strong> to communicate with the <strong>BQ76920</strong> battery monitor.
+      Diagnostics and fault events are handled by firmware and sent via <strong>CAN</strong> to the Raspberry Pi.  
+      Component overview and wiring details are documented on the BMS Research page.
+    </p>
+
+    <hr>
+
+    <h2 id="events-and-alert-sequence">Events and Alert Sequence</h2>
+    <p>
+      The <strong>BQ76920</strong> features an <strong>ALERT</strong> pin controlled by the <code>SYS_STAT</code> register.  
+      This pin goes high when any monitored event occurs. Clearing the corresponding bit by writing a ‘1’ resets the alert.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Addr</th><th>D7</th><th>D6</th><th>D5</th><th>D4</th><th>D3</th><th>D2</th><th>D1</th><th>D0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0x00</td><td>CC_READY</td><td>—</td><td>DEVICE_X</td><td>OVRD_</td><td>UV</td><td>OV</td><td>SCD</td><td>OCD</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="d7-cc_ready">D7 CC_READY</h3>
+    <ul>
+      <li>Triggers when a new current reading is available (every 250ms if <code>CC_EN</code> is set).</li>
+      <li>Cleared by host after reading.</li>
+    </ul>
+
+    <h3 id="d5-device_x">D5 DEVICE_X</h3>
+    <ul>
+      <li>Internal fault indicator; clears all <code>CELLBAL</code> bits.</li>
+      <li>Latched high until cleared by host.</li>
+    </ul>
+
+    <h3 id="d4-ovrd_">D4 OVRD_</h3>
+    <ul>
+      <li>Indicates external pull-up override on ALERT pin.</li>
+      <li>Latched high until cleared.</li>
+    </ul>
+
+    <h3 id="d3-uv">D3 UV</h3>
+    <ul>
+      <li>Undervoltage fault. Discharging disabled until cleared.</li>
+    </ul>
+
+    <h3 id="d2-ov">D2 OV</h3>
+    <ul>
+      <li>Overvoltage fault. Charging disabled until cleared.</li>
+    </ul>
+
+    <h3 id="d1d0-scdocd">D1/D0 SCD/OCD</h3>
+    <ul>
+      <li>Short-circuit or overcurrent during discharge.</li>
+      <li>Discharge immediately disabled upon trigger.</li>
+    </ul>
+
+    <hr>
+
+    <h2 id="cell-balancing">Cell Balancing</h2>
+    <p>
+      The PLRS pack is a <strong>4s2p configuration</strong>, meaning four cell groups are monitored by the BMS.
+      Due to cell mismatches over time, voltages drift — the <strong>BQ76920</strong> performs passive balancing up to <strong>50mA</strong> per channel.
+    </p>
+
+    <table>
+      <thead><tr><th>Pin</th><th>Function</th></tr></thead>
+      <tbody>
+        <tr><td>0x0</td><td>Ground</td></tr>
+        <tr><td>0x1</td><td>Cell 1</td></tr>
+        <tr><td>0x2</td><td>Cell 2</td></tr>
+        <tr><td>0x3</td><td>Cell 3</td></tr>
+        <tr><td>0x4</td><td>Cell 3</td></tr>
+        <tr><td>0x5</td><td>Cell 4</td></tr>
+      </tbody>
+    </table>
+
+    <ul>
+      <li>Balancing only occurs during charging.</li>
+      <li>Adjacent cells are not balanced simultaneously.</li>
+      <li>Control bits are auto-cleared on <code>DEVICE_XREADY</code> or mode change.</li>
+    </ul>
+
+    <hr>
+
+    <h2 id="testing">Testing</h2>
+    <p>Testing ensures correct register communication and fault handling, both in simulation and on hardware.</p>
+
+    <h3 id="procedure">Procedure</h3>
+    <ol>
+      <li>Connect I2C SDA/SCL with existing 10kΩ pull-ups.</li>
+      <li>Common ground between STM and BMS.</li>
+      <li>Run in debug mode; inspect struct values.</li>
+      <li>Confirm <code>BMS</code> struct initialized properly (gain/offset validated).</li>
+    </ol>
+
+    <div class="image-group">
+      <img src="image-20250322-205044.png" alt="BMS Debug Screenshot">
+      <img src="image-20250322-205015.png" alt="BMS ADC Reading Screenshot">
     </div>
 
+    <h3 id="stm32-and-ad2">STM32 and AD2</h3>
+    <p>
+      Used to monitor I2C communication and verify proper register requests.  
+      Protocol analysis performed using <a href="https://www.analog.com/en/products/analog-discovery-2.html" target="_blank">Analog Discovery 2</a>.
+    </p>
+
+    <h3 id="stm32-and-arduino">STM32 and Arduino</h3>
+    <p>
+      Arduino-based testbench simulates the BMS by responding with known register values.  
+      Target MCU: <strong>SAMD XIAO</strong> (Arduino-compatible).
+    </p>
+
+    <h3 id="arduino-testbench-configuration">Arduino Testbench Configuration</h3>
+    <ol>
+      <li>Setup pull-ups and I2C pins.</li>
+      <li>Common ground connection.</li>
+      <li>Run and monitor serial output.</li>
+    </ol>
+
+    <hr>
+
+    <h2 id="debugging">Debugging</h2>
+    <ul>
+      <li>Arduino logs I2C requests to serial monitor.</li>
+      <li>AD2 can decode I2C transactions.</li>
+      <li>CubeIDE debugging via <code>sprintf()</code> logging buffer.</li>
+    </ul>
+
+    <hr>
+
+    <h2 id="development-notes">Development Notes</h2>
+    <ul>
+      <li>Ensure I2C timing matches 400kHz mode.</li>
+      <li>ALERT pin must be configured with external pull-up.</li>
+      <li>Clear <code>SYS_STAT</code> bits after each event to reset ALERT line.</li>
+      <li>Check <code>DEVICE_XREADY</code> before enabling cell balancing.</li>
+    </ul>
+
+    <div class="button-container">
+            <a href="https://github.com/Re-Emzee" target="_blank" class="button">View Source on GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">PLRS STM32U5 Bootloader</div>
+  <div class="project-description">
+    A reliable dual-bank bootloader enabling remote firmware updates via CAN FD with CRC validation, flash integrity checks, and rollback protection 
+  </div>
+  <div class="project-tags">STM32U575 • CAN FD • Flash Memory • Embedded C • Bootloader</div>
+  
+  <div class="project-details" style="display:none">
+    <h2>Overview</h2>
+    <p>
+      This project implements a robust bootloader architecture for STM32U5-based embedded systems. 
+      It enables firmware updates to be received remotely via CAN FD, validated using CRC, and 
+      safely flashed into a dual-bank memory layout with rollback capability. The system 
+      guarantees that incomplete or corrupted updates never overwrite the running application.
+    </p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li>Dual-bank flash update system with rollback safety.</li>
+      <li>CRC-based integrity verification before execution.</li>
+      <li>Remote update capability via custom CAN FD protocol.</li>
+      <li>Independent flash management and CAN utilities.</li>
+      <li>Safe transition between bootloader and application.</li>
+    </ul>
+    <hr>
+    <h2>Architecture</h2>
+    <p>
+      The flash memory is divided into two main banks:
+    </p>
+    <ul>
+      <li><strong>Bank 1:</strong> Contains the bootloader (first 64KB) and a buffer region for new firmware.</li>
+      <li><strong>Bank 2:</strong> Contains the currently active application.</li>
+    </ul>
+    <p>
+      On startup, the bootloader checks a boot flag in flash memory. 
+      If set, it copies the new firmware from Bank 1 to Bank 2, performs CRC verification, 
+      and jumps to the application. If validation fails, it reverts to the existing program.
+    </p>
+
+    <img src="assets/bootloader-diagram.png" alt="Bootloader memory layout diagram" class="project-image">
+
+    <h3>Update Flow</h3>
+    <ol>
+      <li>Application receives firmware packets over CAN FD.</li>
+      <li>Packets are written to Bank 1 using <code>Flash_Write()</code> (16-byte aligned).</li>
+      <li>After transmission, CRC is computed and verified.</li>
+      <li>If valid, the application sets a boot flag and triggers a system reset.</li>
+      <li>The bootloader detects the flag, copies firmware to Bank 2, and clears the flag.</li>
+    </ol>
+
+    <pre><code class="language-c">
+// Check for boot flag and perform update if needed
+if (BootFlag_IsSet()) {
+    if (Verify_CRC(BANK1_START, BANK1_END)) {
+        Flash_Copy(BANK1_APP_START, BANK2_APP_START, APP_SIZE);
+        BootFlag_Clear();
+    }
+}
+JumpToApplication();
+    </code></pre>
+
+    <hr>
+
+    <div class="button-container">
+    <a href="https://github.com/Re-Emzee" target="_blank" class="button">View Source on GitHub</a>
+            </div>
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">AstroNvim Setup</div>
+  <div class="project-description">My customized Neovim configuration from AstroNvim.</div>
+  <div class="project-tags">Lua • Neovim • LSP</div>
+  <div class="project-details" style="display:none">
+    <h2>
+My community Config
+          </h2>
+<pre><code class="language-lua">
+-- AstroCommunity: import any community modules here
+-- We import this file in `lazy_setup.lua` before the `plugins/` folder.
+-- This guarantees that the specs are processed before any user plugins.
+
+---@type LazySpec
+return {
+  "AstroNvim/astrocommunity",
+  { import = "astrocommunity.pack.lua" },
+  -- import/override with your plugins folder
+  -- { import = "astrocommunity.bars-and-lines.bufferline-nvim"},
+  { import = "astrocommunity.media.cord-nvim" },
+  { import = "astrocommunity.color.huez-nvim" },
+  { import = "astrocommunity.color.transparent-nvim" },
+  { import = "astrocommunity.remote-development.remote-sshfs-nvim" },
+  { import = "astrocommunity.split-and-window.windows-nvim" },
+  { import = "astrocommunity.split-and-window.colorful-winsep-nvim" },
+  { import = "astrocommunity.editing-support.comment-box-nvim" },
+  -- { import = "astrocommunity.editing-support.telescope-undo-nvim" },
+  { import = "astrocommunity.editing-support.chatgpt-nvim" },
+  { import = "astrocommunity.editing-support.todo-comments-nvim" },
+  { import = "astrocommunity.editing-support.yanky-nvim" },
+  { import = "astrocommunity.editing-support.vim-move" },
+  { import = "astrocommunity.file-explorer.telescope-file-browser-nvim" },
+  { import = "astrocommunity.git.fugit2-nvim" },
+  { import = "astrocommunity.code-runner.compiler-nvim" },
+  { import = "astrocommunity.code-runner.sniprun" },
+  -- { import = "astrocommunity.diagnostics.error-lens-nvim" },
+  -- { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
+  -- { import = "astrocommunity.quickfix.nvim-bqf" },
+  -- { import = "astrocommunity.debugging.persistent-breakpoints-nvim" },
+  { import = "astrocommunity.scrolling.neoscroll-nvim" },
+  -- { import = "astrocommunity.debugging.nvim-dap-view" },
+  -- { import = "astrocommunity.completion.blink-cmp" },
+  -- { import = "astrocommunity.completion.cmp-cmdline" },
+  -- { import = "astrocommunity.completion.cmp-spell" },
+  -- { import = "astrocommunity.completion.coq_nvim" },
+}
+
+
+</code></pre>
+
+    <div class="button-container">
+    <a href="https://github.com/Re-Emzee" target="_blank" class="button">View dotfiles on GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">RISK V CPU</div>
+  <div class="project-description">Personal portfolio website with dark/light mode toggle and responsive layout.</div>
+  <div class="project-tags">HTML • CSS • JavaScript</div>
+  <div class="project-details" style="display:none">
+    <p>RISK V CPU is a custom web-based interface demonstrating a simulated CPU architecture. It showcases instruction execution, pipeline behavior, and register manipulation while incorporating interactive elements, responsive design, and theme switching to provide an educational and visually appealing experience.</p>
+    <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">🛰️ SpaceDance — ML Motion Tracking Game</div>
+  <div class="project-description">
+    A gesture-based rhythm game that uses real-time body tracking and motion detection to control gameplay.
+    Built with Python and MediaPipe, SpaceDance detects poses from a webcam feed to match dance moves to
+    beat-synchronized targets on screen. Players “dance” to hit cues, earning points for accuracy and timing.
+  </div>
+  <div class="project-tags">Python • OpenCV • MediaPipe • Machine Learning • Game Design</div>
+
+  <div class="project-details" style="display:none;">
+    <h2>Overview</h2>
+    <p>
+      <strong>SpaceDance</strong> combines computer vision, audio synchronization, and interactive gameplay
+      to create an ML-powered rhythm experience. Using <code>MediaPipe Pose</code> for skeleton tracking and
+      <code>OpenCV</code> for camera input, player motion is analyzed in real time. Each detected pose is
+      matched to predefined motion patterns corresponding to in-game dance moves.
+    </p>
+
+    <h2>How It Works</h2>
+    <ul>
+      <li><strong>Pose Estimation:</strong> MediaPipe extracts body keypoints (arms, torso, legs).</li>
+      <li><strong>Motion Classification:</strong> Detected poses are compared to trained patterns using vector similarity.</li>
+      <li><strong>Game Logic:</strong> The player’s accuracy determines scoring and combo streaks.</li>
+      <li><strong>Audio Sync:</strong> Beats are time-aligned using a Python-based rhythm tracker.</li>
+    </ul>
+
+    <h2>Development Notes</h2>
+    <ul>
+      <li>Gesture recognition fine-tuned with cosine similarity of joint vectors.</li>
+      <li>Dynamic difficulty scaling based on player performance.</li>
+      <li>Optimized frame rate using multi-threaded camera capture.</li>
+      <li>Audio-beat detection tested with FFT-based onset detection.</li>
+    </ul>
+
+    <div class="button-container">
+      <a href="https://github.com/Re-Emzee/SpaceDance" target="_blank" class="button">View on GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">🥗 MealPrep — Nutrition Tracking App</div>
+  <div class="project-description">
+    A full-stack nutrition tracker that helps users plan meals, analyze macronutrients, and visualize progress
+    through an interactive dashboard. Built with React, Flask, and MongoDB for real-time meal data logging
+    and personalized recommendations.
+  </div>
+  <div class="project-tags">React • Flask • MongoDB • REST API • Data Visualization</div>
+
+  <div class="project-details" style="display:none;">
+    <h2>Overview</h2>
+    <p>
+      <strong>MealPrep</strong> is a cross-platform nutrition management web app designed to simplify daily meal
+      tracking and provide clear insights into dietary habits. It allows users to log ingredients, analyze their
+      nutritional breakdown, and receive feedback on caloric balance and macronutrient targets.
+    </p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li><strong>Real-Time Nutrition Analysis:</strong> Calculates calories, protein, carbs, and fats per meal using live food databases.</li>
+      <li><strong>Custom Meal Plans:</strong> Create and store reusable meal presets for faster tracking.</li>
+      <li><strong>Data Visualization:</strong> Interactive charts display nutrient ratios and weekly calorie trends.</li>
+      <li><strong>RESTful API:</strong> Flask backend handles CRUD operations and authentication tokens securely.</li>
+      <li><strong>Responsive UI:</strong> Built with React for a smooth and adaptive user experience.</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    <p>
+      The application follows a clean MVC-style separation:
+    </p>
+    <ul>
+      <li><strong>Frontend:</strong> React components for meal logging, charts, and authentication.</li>
+      <li><strong>Backend:</strong> Flask REST API providing endpoints for user management, meal data, and analytics.</li>
+      <li><strong>Database:</strong> MongoDB stores user profiles, meal entries, and nutrient data with flexible schema design.</li>
+    </ul>
+
+    <h4>Example Workflow</h4>
+    <ol>
+      <li>User logs in and records a meal (e.g., chicken salad).</li>
+      <li>Frontend sends meal data to Flask API via POST request.</li>
+      <li>API fetches nutrition info using an external food database and stores results in MongoDB.</li>
+      <li>Frontend charts automatically update to reflect the new totals.</li>
+    </ol>
+
+    <h2>Development Notes</h2>
+    <ul>
+      <li>Authentication handled with JWT tokens and bcrypt password hashing.</li>
+      <li>State management via React Context API for meal data and session state.</li>
+      <li>Backend supports modular routes and scalable database integration.</li>
+      <li>Custom hooks manage user inputs and validation logic cleanly.</li>
+    </ul>
+
+    <h2>Links</h2>
+    <div class="button-container">
+      <a href="https://github.com/Re-Emzee/MealPrep" target="_blank" class="button">View on GitHub</a>
+    </div>
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">Arduino Robotic Claw</div>
+  <div class="project-description">Arduino-controlled claw arm with precise movement and grasping capability.</div>
+  <div class="project-tags">Arduino • C++ • Robotics</div>
+  <div class="project-details" style="display:none">
+    <p>This project consists of a robotic claw controlled via Arduino and servo motors. It demonstrates precise movement, gripping control, and basic automation, and is capable of responding to simple input commands. The project integrates electronics, firmware programming, and mechanical design to achieve responsive operation.</p>
+    <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">UNIX-Based Shell</div>
+  <div class="project-description">Custom command-line shell implementing core UNIX commands.</div>
+  <div class="project-tags">C • UNIX • Systems Programming</div>
+  <div class="project-details" style="display:none">
+    <p>This shell replicates essential UNIX command-line functionality, including file manipulation, process management, and piping. It highlights low-level systems programming skills in C, demonstrating an understanding of process control, memory management, and input/output handling in a UNIX environment.</p>
+    <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">Virtual Memory System and Dynamic Memory Allocator</div>
+  <div class="project-description">Custom memory management system simulating virtual memory allocation.</div>
+  <div class="project-tags">C • Operating Systems • Memory Management</div>
+  <div class="project-details" style="display:none">
+    <p>This project implements a virtual memory manager and dynamic memory allocator to simulate how operating systems handle memory. It includes page mapping, allocation/deallocation strategies, and optimization for fragmentation. The project demonstrates core OS concepts and low-level programming in C.</p>
+    <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+  </div>
+</div>
+
+<div class="project-card" onclick="toggleCard(this)">
+  <div class="project-title">HomeTerm Fork</div>
+  <div class="project-description">Forked terminal emulator with added custom features and UI improvements.</div>
+  <div class="project-tags">C • Linux • Terminal</div>
+  <div class="project-details" style="display:none">
+    <p>This fork of the HomeTerm terminal emulator introduces new usability features, improved UI rendering, and enhanced input handling. It demonstrates familiarity with low-level terminal control, Linux system calls, and user interface design within a command-line environment.</p>
+    <img src="https://via.placeholder.com/600x300" class="project-image" alt="Project preview">
+  </div>
+</div>
   </main>
 
   <script>
